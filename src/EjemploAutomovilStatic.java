@@ -1,15 +1,14 @@
-import java.util.Date;
+
 import java.util.Scanner;
 
-public class EjemploAutomovil {
-
+public class EjemploAutomovilStatic {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
         String fabricante,modelo,color;
         double cilindrada;
         int deposito;
-        Date fecha = new Date();
+
         Automovil seat = new Automovil("Seat","Leon","Gris",2.0,50);
 
         System.out.println("auto = " + seat);
@@ -33,6 +32,10 @@ public class EjemploAutomovil {
         System.out.println("Indica la capacidad del deposito");
         deposito=Integer.parseInt(sc.nextLine());
 
+        Automovil.setColorPatente("Amarillo");
+
+        System.out.println(Automovil.getColorPatente());
+
 
         Automovil kia = new Automovil(fabricante,modelo,color,cilindrada,deposito);
 
@@ -42,6 +45,7 @@ public class EjemploAutomovil {
         System.out.println(kia.equals(audi));
         System.out.println(kia==audi);
         System.out.println("kia = " + kia);
+        System.out.println("Kilometros por litros = "+Automovil.calcularConsumoEstatico(300,60 ));
 
 
 
