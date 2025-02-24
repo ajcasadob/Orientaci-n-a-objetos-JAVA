@@ -5,12 +5,13 @@ public class EjemploAutomovilStatic {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        String fabricante,modelo,color;
+      /*  String fabricante,modelo,color;
         double cilindrada;
         int deposito;
 
         Automovil seat = new Automovil("Seat","Leon","Gris",2.0,50);
-
+        seat.setTipo(TipoAutomovil.HATBACK);
+        TipoAutomovil tipoSeat = seat.getTipo();
         System.out.println("auto = " + seat);
 
         Automovil audi = new Automovil("Audi","Q8","Blanco",3.0,60);
@@ -47,7 +48,7 @@ public class EjemploAutomovilStatic {
         System.out.println("kia = " + kia);
         System.out.println("Kilometros por litros = "+Automovil.calcularConsumoEstatico(300,60 ));
 
-
+*/
 
         sc.close();
     }

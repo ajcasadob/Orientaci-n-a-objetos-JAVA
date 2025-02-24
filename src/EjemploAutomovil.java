@@ -10,11 +10,18 @@ public class EjemploAutomovil {
         double cilindrada;
         int deposito;
         Date fecha = new Date();
-        Automovil seat = new Automovil("Seat","Leon","Gris",2.0,50);
+        Motor motorSeat = new Motor(2.0,TipoMotor.DIESEL);
+        Deposito deposito1= new Deposito();
+        Persona conductor= new Persona("Pepe","Lopez");
+        Automovil seat = new Automovil("Seat","Leon","Gris",motorSeat,deposito1);
+        seat.setMotor(motorSeat);
+
+
 
         System.out.println("auto = " + seat);
-
-        Automovil audi = new Automovil("Audi","Q8","Blanco",3.0,60);
+        Motor motorAudi = new Motor(3.0,TipoMotor.GASOLINA);
+        Deposito deposito2= new Deposito(60);
+        Automovil audi = new Automovil("Audi","Q8","Blanco",motorAudi,deposito2);
 
         System.out.println("audi = " + audi);
 
@@ -34,14 +41,14 @@ public class EjemploAutomovil {
         deposito=Integer.parseInt(sc.nextLine());
 
 
-        Automovil kia = new Automovil(fabricante,modelo,color,cilindrada,deposito);
+       // Automovil kia = new Automovil(fabricante,modelo,color,cilindrada,deposito);
 
-        System.out.println(kia.calcularConsumo(20,60));
+        //System.out.println(kia.calcularConsumo(20,60));
 
         //Comparando con equals ambos objetos si son iguales.
-        System.out.println(kia.equals(audi));
-        System.out.println(kia==audi);
-        System.out.println("kia = " + kia);
+        //System.out.println(kia.equals(audi));
+        //System.out.println(kia==audi);
+        //System.out.println("kia = " + kia);
 
 
 

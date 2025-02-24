@@ -1,26 +1,74 @@
-public class Automovil {
+import java.util.Arrays;
+
+public class Automovil implements  Comparable{
 
     private String fabricante;
     private String modelo;
     private String color;
-    private double cilindrada;
-    private int capacidadDeposito;
+    private Motor motor;
+    private Deposito deposito;
     private static String colorPatente;
     private static int capacidadDepositoStatic;
+    private TipoAutomovil tipo;
+    private Persona conductor;
+    private Rueda [] ruedas;
+    private int indiceRueda;
 
-    public Automovil(String fabricante, String modelo, String color, double cilindrada, int capacidadDeposito) {
+    public Automovil(String fabricante, String modelo, String color, Motor motor, Deposito deposito) {
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.color = color;
-        this.cilindrada = cilindrada;
-        this.capacidadDeposito = capacidadDeposito;
+        this.ruedas= new Rueda[5];
+    }
+
+    public Automovil(String fabricante, String modelo, String color) {
+        this.fabricante = fabricante;
+        this.modelo = modelo;
+        this.color = color;
+        this.ruedas= new Rueda[5];
+
+    }
+
+    public Automovil(String fabricante, String modelo, String color, Motor motor, Deposito deposito, Persona conductor, Rueda[] ruedas) {
+        this.fabricante = fabricante;
+        this.modelo = modelo;
+        this.color = color;
+        this.motor = motor;
+        this.deposito = deposito;
+        this.conductor = conductor;
+        this.ruedas= new Rueda[5];
     }
 
     public Automovil() {
+        this.ruedas= new Rueda[5];
+    }
+
+    public TipoAutomovil getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoAutomovil tipo) {
+        this.tipo = tipo;
     }
 
     public String getFabricante() {
         return fabricante;
+    }
+
+    public Motor getMotor() {
+        return motor;
+    }
+
+    public void setMotor(Motor motor) {
+        this.motor = motor;
+    }
+
+    public Deposito getDeposito() {
+        return deposito;
+    }
+
+    public void setDeposito(Deposito deposito) {
+        this.deposito = deposito;
     }
 
     public void setFabricante(String fabricante) {
@@ -43,16 +91,16 @@ public class Automovil {
         this.color = color;
     }
 
-    public double getCilindrada() {
-        return cilindrada;
+    public Rueda[] getRuedas() {
+        return ruedas;
     }
 
-    public void setCilindrada(double cilindrada) {
-        this.cilindrada = cilindrada;
+    public void setRuedas(Rueda[] ruedas) {
+        this.ruedas = ruedas;
     }
 
-    public int getCapacidadDeposito() {
-        return capacidadDeposito;
+    public void addRueda (Rueda rueda){
+        this.ruedas[indiceRueda++]=rueda;
     }
 
     public static String getColorPatente() {
@@ -63,9 +111,6 @@ public class Automovil {
         Automovil.colorPatente = colorPatente;
     }
 
-    public void setCapacidadDeposito(int capacidadDeposito) {
-        this.capacidadDeposito = capacidadDeposito;
-    }
 
     @Override
     public String toString() {
@@ -73,18 +118,28 @@ public class Automovil {
                 "fabricante='" + fabricante + '\'' +
                 ", modelo='" + modelo + '\'' +
                 ", color='" + color + '\'' +
-                ", cilindrada=" + cilindrada +
-                ", capacidadDeposito=" + capacidadDeposito +
+                ", motor=" + (motor != null ? motor : "No especificado") +
+                ", deposito=" + (deposito != null ? deposito : "No especificado") +
+                ", tipo=" + (tipo != null ? tipo : "No especificado") +
+                ", conductor=" + (conductor != null ? conductor : "No especificado") +
+                ", ruedas=" + (ruedas != null ? Arrays.toString(ruedas) : "No especificado") +
                 '}';
     }
 
+
     public double calcularConsumo(int km, double porcentajeGasolina){
 
-        return km/(capacidadDeposito*porcentajeGasolina);
+        return km/(deposito.getCapacidad()*porcentajeGasolina);
     }
     public static double calcularConsumoEstatico (int km, double porcentajeGasolina){
 
         return km/(Automovil.capacidadDepositoStatic*porcentajeGasolina);
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Automovil a = (Automovil) o;
+        return this.fabricante.compareTo(a.fabricante);
     }
 
     @Override
